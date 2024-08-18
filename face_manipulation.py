@@ -9,8 +9,8 @@ from tf2net_openvino import Object_Segmentation_TF2
 class FaceMainipulation:
 
     def __init__(self) -> None:
-        self.model_path = os.path.join(dir, 'model/saved_model.xml')
-        self.labelmap_path = os.path.join(dir, 'model/labelmap.pbtxt')         
+        self.model_path = os.path.join(dir, 'saved_model/saved_model.xml')
+        self.labelmap_path = os.path.join(dir, 'saved_model/labelmap.pbtxt')         
         self.debug_dir = os.path.join(dir, 'debug')
         os.makedirs(self.debug_dir, exist_ok=True)
 
