@@ -37,6 +37,8 @@
    pip install fastapi uvicorn opencv-python boto3 aiofiles python-dotenv
    ```
 
+   xem trong các file .py và cài đătk đủ thư viện (nếu chưa có)
+
 ## 2. Thiết lập biến môi trường
 
 1. Tạo file `.env` trong thư mục gốc của dự án.
@@ -45,7 +47,6 @@
    ```
    AWS_ACCESS_KEY_ID=your_access_key
    AWS_SECRET_ACCESS_KEY=your_secret_key
-   AWS_DEFAULT_REGION=your_region
    ```
 
 ## 3. Cấu trúc thư mục
@@ -68,13 +69,23 @@
 Để chạy ứng dụng FastAPI, bạn có thể sử dụng `uvicorn` như sau:
 
 ```bash
-uvicorn app:app --reload
+python app.py
 ```
 
 - **`app:app`** - Tham số đầu tiên là tên file Python (không bao gồm phần mở rộng `.py`), và tham số thứ hai là tên của đối tượng FastAPI trong file `app.py`.
 - **`--reload`** - Tham số này giúp tự động tải lại ứng dụng khi có thay đổi trong mã nguồn.
 
 Sau khi chạy lệnh này, ứng dụng sẽ được khởi chạy và bạn có thể truy cập vào địa chỉ `http://127.0.0.1:8000` để kiểm tra.
+localhost:8000/manipulate_face
+
+curl tham khảo test bằng postman:
+curl --location 'localhost:8000/manipulate_face' \
+--form 'file=@"/C:/Users/admin/Downloads/crop-20240725T035847Z-001/crop/flickr_0501.png"'
+
+Sử dụng kiểu form-data
+Key: file
+Value: chọn một ảnh bất kỳ
+==> Send
 
 ## 5. Ghi chú thêm
 
