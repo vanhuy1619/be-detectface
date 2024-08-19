@@ -14,8 +14,8 @@ public class S3Uploader {
     private final AmazonS3 s3Client;
     private final TransferUtility transferUtility;
     private final String bucketName = "image-recognition-app-111";
-    private final String accessKey = "AKIA45TM4LYNW54TQS7T";
-    private final String secretKey = "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";
+    private final String accessKey = "";
+    private final String secretKey = "";
 
     public S3Uploader(Context context) {
         BasicAWSCredentials awsCredentials = new BasicAWSCredentials(accessKey, secretKey);
