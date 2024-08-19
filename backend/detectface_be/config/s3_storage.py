@@ -18,7 +18,8 @@ class S3Storage:
             if os.path.exists(src_path):
                 self.s3_client.upload_file(src_path, self.bucket_name, des_path)
                 return des_path
-        except:
+        except Exception as e:
+            print(f"An error occurred: {e}")
             pass
 
     def download_file(self, src_path, des_path):
@@ -26,6 +27,6 @@ class S3Storage:
             self.s3_client.download_file(self.bucket_name, src_path, des_path)
             if os.path.exists(des_path):
                 return True
-        except:
+        except Exception as e:
+            print(f"An error occurred: {e}")
             pass
-

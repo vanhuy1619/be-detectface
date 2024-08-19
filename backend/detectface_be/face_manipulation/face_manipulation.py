@@ -2,17 +2,25 @@ import os
 import sys
 import cv2
 dir = os.path.dirname(__file__)
-sys.path.append(dir)
-from tf2net_openvino import Object_Segmentation_TF2
+project_dir = os.path.dirname(dir)
+from .tf2net_openvino import Object_Segmentation_TF2
 
 
 class FaceMainipulation:
 
     def __init__(self) -> None:
-        self.model_path = os.path.join(dir, 'saved_model/saved_model.xml')
-        self.labelmap_path = os.path.join(dir, 'saved_model/labelmap.pbtxt')         
+        self.model_path = os.path.join(project_dir, 'saved_model', 'saved_model.xml')
+        self.labelmap_path = os.path.join(project_dir, 'saved_model', 'labelmap.pbtxt')           
         self.debug_dir = os.path.join(dir, 'debug')
         os.makedirs(self.debug_dir, exist_ok=True)
+
+    # Check if model file exists
+        if not os.path.exists(self.model_path):
+            raise FileNotFoundError(f"Model file not found at {self.model_path}")
+
+        # Check if labelmap file exists
+        if not os.path.exists(self.labelmap_path):
+            raise FileNotFoundError(f"Labelmap file not found at {self.labelmap_path}")
 
     def load_model(self):
         self.segmentor = Object_Segmentation_TF2(self.model_path, self.labelmap_path, 0.65)
